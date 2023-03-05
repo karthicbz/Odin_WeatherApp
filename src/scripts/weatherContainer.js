@@ -5,12 +5,15 @@ const weatherContainer = (()=>{
     container.id = 'weatherContainer';
 
 
-    const countryDetails = document.createElement('div');
-    countryDetails.className = 'country-details';
+    // const countryDetails = document.createElement('div');
+    // countryDetails.className = 'country-details';
 
-    const cityName = document.createElement('p');
-    cityName.className = 'cityName';
-    countryDetails.appendChild(cityName);
+    // const cityName = document.createElement('p');
+    // cityName.className = 'cityName';
+    // countryDetails.appendChild(cityName);
+    const weatherHeader = divPacker([['p', 'cityName']], 'weather-header');
+    const unitToggler = divPacker([['button', 'celcius', null, 'C'], ['button', 'farenheit', null, 'F']], 'units');
+    weatherHeader.append(unitToggler);
 
     const weatherDetails = document.createElement('div');
     weatherDetails.className = 'weather-details';
@@ -34,7 +37,7 @@ const weatherContainer = (()=>{
     const otherWeatherInfo = divPacker([['p', 'max-temp', null], ['p', 'min-temp', null],
 ['p', 'visibility', null], ['p', 'humidity', null]], 'other-weather-info');
 
-    container.appendChild(countryDetails);
+    container.appendChild(weatherHeader);
     container.appendChild(weatherDetails);
     container.appendChild(otherWeatherDetails);
     container.appendChild(otherWeatherInfo);
