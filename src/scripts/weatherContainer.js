@@ -1,3 +1,5 @@
+import { createElement, divPacker } from "./element_creator";
+
 const weatherContainer = (()=>{
     const container = document.createElement('div');
     container.id = 'weatherContainer';
@@ -29,10 +31,13 @@ const weatherContainer = (()=>{
     weatherText.className = 'weather-text';
     otherWeatherDetails.appendChild(weatherText);
 
+    const otherWeatherInfo = divPacker([['p', 'max-temp', null], ['p', 'min-temp', null],
+['p', 'visibility', null], ['p', 'humidity', null]], 'other-weather-info');
 
     container.appendChild(countryDetails);
     container.appendChild(weatherDetails);
     container.appendChild(otherWeatherDetails);
+    container.appendChild(otherWeatherInfo);
 
     return container;
 })();
