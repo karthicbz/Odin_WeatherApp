@@ -48,6 +48,8 @@ const getWeatherDetails = (value, unit)=>{
     })
 }
 
+
+
 window.addEventListener('load', ()=>{
     getWeatherDetails('london', selectedUnit.unit);
     document.querySelector('.units>.metric').classList.add('selected');
@@ -58,19 +60,12 @@ units.addEventListener('click', (e)=>{
         button.classList.remove('selected');
     });
     selectedUnit.unit = e.target.className;
+    let name = cityName.textContent.split(',');
+    getWeatherDetails(name[0], selectedUnit.unit);
     if(e.target.className === 'metric'){
-
-        let name = cityName.textContent.split(',');
-        getWeatherDetails(name[0], selectedUnit.unit);
-
         selectedUnit.symbol = 'C';
     }else{
-
-        let name = cityName.textContent.split(',');
-        getWeatherDetails(name[0], selectedUnit.unit);
-
         selectedUnit.symbol = 'F';
     }
     e.target.classList.add('selected');
-
 })

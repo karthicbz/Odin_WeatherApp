@@ -1,4 +1,5 @@
 import { createElement, divPacker } from "./element_creator";
+import { getHourlyWeatherData } from "./weatherData";
 
 const weatherContainer = (()=>{
     const container = document.createElement('div');
@@ -37,10 +38,17 @@ const weatherContainer = (()=>{
     const otherWeatherInfo = divPacker([['p', 'max-temp', null], ['p', 'min-temp', null],
 ['p', 'visibility', null], ['p', 'humidity', null]], 'other-weather-info');
 
+    const hourlyWeatherContainer = createElement('div', 'hourly-weather');
+    for(let i=0; i<10; i++){
+        const hourlyWeather = divPacker([['p', 'day'], ['img', 'weather-img'], ['p', 'min-max'], ['p', 'desc']], 'hourly-weather-'+i);
+        hourlyWeatherContainer.appendChild(hourlyWeather);
+    }
+
     container.appendChild(weatherHeader);
     container.appendChild(weatherDetails);
     container.appendChild(otherWeatherDetails);
     container.appendChild(otherWeatherInfo);
+    container.appendChild(hourlyWeatherContainer);
 
     return container;
 })();
