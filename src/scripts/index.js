@@ -18,6 +18,7 @@ let selectedUnit = {unit: 'metric', symbol: 'C'};
 
 searchButton.addEventListener('click', ()=>{
     getWeatherDetails(searchField.value, selectedUnit.unit);
+    getHourlyWeatherDetails(searchField.value, selectedUnit.unit);
 })
 
 const displayWeatherDetails = (data, unit)=>{
@@ -87,6 +88,7 @@ units.addEventListener('click', (e)=>{
     selectedUnit.unit = e.target.className;
     let name = cityName.textContent.split(',');
     getWeatherDetails(name[0], selectedUnit.unit);
+    getHourlyWeatherDetails(name[0], selectedUnit.unit);
     if(e.target.className === 'metric'){
         selectedUnit.symbol = 'C';
     }else{
