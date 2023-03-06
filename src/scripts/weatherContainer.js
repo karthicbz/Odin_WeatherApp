@@ -39,7 +39,7 @@ const weatherContainer = (()=>{
 ['p', 'visibility', null], ['p', 'humidity', null]], 'other-weather-info');
 
     const hourlyWeatherContainer = createElement('div', 'hourly-weather');
-    for(let i=0; i<10; i++){
+    for(let i=0; i<40; i++){
         const hourlyWeather = divPacker([['p', 'day'], ['img', 'weather-img'], ['p', 'min-max'], ['p', 'desc']], 'hourly-weather-'+i);
         hourlyWeatherContainer.appendChild(hourlyWeather);
     }

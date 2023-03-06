@@ -118,3 +118,25 @@ body{
     background-color: #ff6c00;
     color: white;
 }
+
+.hourly-weather{
+    height: 600px;
+    overflow-y:scroll;
+    scrollbar-width: none;
+    margin-top: 10px;
+}
+
+.hourly-weather>div{
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    color: gray;
+}
+
+.hourly-weather>div>p{
+    flex: 1;
+}
+
+.hourly-weather>div>img{
+    margin-right: 48px;
+}
