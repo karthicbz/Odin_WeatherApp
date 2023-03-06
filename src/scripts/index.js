@@ -12,13 +12,16 @@ const searchField = document.querySelector('.city-input');
 const searchButton = document.querySelector('.weather-search');
 const mainWeather = document.querySelector('.main-weather');
 const mainWeatherImage = document.querySelector('.weather-img');
+const units = document.querySelector('.weather-header>.units');
+const cityName = document.querySelector('.cityName');
+let selectedUnit = {unit: 'metric', symbol: 'C'};
 
 searchButton.addEventListener('click', ()=>{
-    getWeatherDetails(searchField.value, 'metric');
+    getWeatherDetails(searchField.value, selectedUnit.unit);
 })
 
 const displayWeatherDetails = (data, unit)=>{
-    document.querySelector('.cityName').innerHTML = `${data.name}<span>, ${data.sys.country}</span>`;
+    cityName.innerHTML = `${data.name}<span>, ${data.sys.country}</span>`;
     mainWeather.innerHTML = `${data.main.temp}<span class='units'>&#176;${unit}</span>`;
     mainWeatherImage.src = `http://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
     document.querySelector('.weather-text').innerHTML = `Feels like ${data.main.feels_like}<span>&#176;${unit}</span>. ${data.weather[0].description}`;
@@ -38,7 +41,7 @@ const getWeatherDetails = (value, unit)=>{
     getWeatherData.weatherData(value, unit)
     .then(function(data){
         console.log(data);
-        displayWeatherDetails(data, 'C');
+        displayWeatherDetails(data, selectedUnit.symbol);
     })
     .catch(err=>{
         console.log(err);
@@ -46,6 +49,28 @@ const getWeatherDetails = (value, unit)=>{
 }
 
 window.addEventListener('load', ()=>{
-    getWeatherDetails('london', 'metric');
-    document.querySelector('.units>.celcius').classList.add('selected');
+    getWeatherDetails('london', selectedUnit.unit);
+    document.querySelector('.units>.metric').classList.add('selected');
+})
+
+units.addEventListener('click', (e)=>{
+    document.querySelectorAll('.units>button').forEach(button=>{
+        button.classList.remove('selected');
+    });
+    selectedUnit.unit = e.target.className;
+    if(e.target.className === 'metric'){
+
+        let name = cityName.textContent.split(',');
+        getWeatherDetails(name[0], selectedUnit.unit);
+
+        selectedUnit.symbol = 'C';
+    }else{
+
+        let name = cityName.textContent.split(',');
+        getWeatherDetails(name[0], selectedUnit.unit);
+
+        selectedUnit.symbol = 'F';
+    }
+    e.target.classList.add('selected');
+
 })

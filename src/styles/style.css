@@ -73,12 +73,12 @@ body{
     border: none;
 }
 
-.units>.celcius{
+.units>.metric{
     border-top-left-radius: 3px;
     border-bottom-left-radius: 3px;
 }
 
-.units>.farenheit{
+.units>.imperial{
     border-top-right-radius: 3px;
     border-bottom-right-radius: 3px;
 }

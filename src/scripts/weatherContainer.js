@@ -12,7 +12,7 @@ const weatherContainer = (()=>{
     // cityName.className = 'cityName';
     // countryDetails.appendChild(cityName);
     const weatherHeader = divPacker([['p', 'cityName']], 'weather-header');
-    const unitToggler = divPacker([['button', 'celcius', null, 'C'], ['button', 'farenheit', null, 'F']], 'units');
+    const unitToggler = divPacker([['button', 'metric', null, 'C'], ['button', 'imperial', null, 'F']], 'units');
     weatherHeader.append(unitToggler);
 
     const weatherDetails = document.createElement('div');
