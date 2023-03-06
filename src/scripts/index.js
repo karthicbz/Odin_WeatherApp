@@ -1,5 +1,5 @@
 import { inputContainer } from "./inputContainer";
-import { getWeatherData } from "./weatherData";
+import { getHourlyWeatherData, getWeatherData } from "./weatherData";
 import { weatherContainer } from "./weatherContainer";
 import '../styles/style.css';
 
@@ -48,10 +48,35 @@ const getWeatherDetails = (value, unit)=>{
     })
 }
 
+const getHourlyWeatherDetails = (value, unit)=>{
+    getHourlyWeatherData.hourlyWeatherData(value, unit)
+    .then(function(data){
+        console.log(data.list);
+        displayHourlyWeatherDetails(data.list, selectedUnit.symbol);
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+}
 
+const displayHourlyWeatherDetails = (data, unit)=>{
+    document.querySelectorAll('.hourly-weather>div').forEach(div=>{
+        let currentArray = Number(div.className.slice(-1));
+        const [day, image, weather, weatherDesc] = Array.from(div.childNodes);
+        const date = new Date(data[currentArray].dt * 1000);
+        day.textContent = date.toDateString().replace('2023', '');
+
+        image.src = `http://openweathermap.org/img/wn/${data[currentArray].weather[0].icon}.png`;
+
+        weather.innerHTML = `${data[currentArray].main.temp}<span>&#176;${unit}</span>`;
+
+        weatherDesc.textContent = data[currentArray].weather[0].description;
+    })
+}
 
 window.addEventListener('load', ()=>{
     getWeatherDetails('london', selectedUnit.unit);
+    getHourlyWeatherDetails('london', selectedUnit.unit);
     document.querySelector('.units>.metric').classList.add('selected');
 })
 
