@@ -120,10 +120,15 @@ body{
 }
 
 .hourly-weather{
-    height: 600px;
+    height: 650px;
     overflow-y:scroll;
     scrollbar-width: none;
-    margin-top: 10px;
+    -ms-overflow-style: none;
+    margin-top: 32px;
+}
+
+.hourly-weather::-webkit-scrollbar{
+    display: none;
 }
 
 .hourly-weather>div{
@@ -135,6 +140,7 @@ body{
 
 .hourly-weather>div>p{
     flex: 1;
+    margin-left: 16px;
 }
 
 .hourly-weather>div>img{
