@@ -28,6 +28,8 @@ body{
     border: 1px solid gray;
     border-radius: 3px;
     border-right: none;
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
 }
 
 #inputContainer>.weather-search{
@@ -36,6 +38,8 @@ body{
     background-color: black;
     color: white;
     border-radius: 3px;
+    border-bottom-left-radius: 0;
+    border-top-left-radius: 0;
     /* margin-right: 10px; */
 }
 
@@ -45,4 +49,72 @@ body{
 
 #inputContainer>.weather-search:active{
     background-color: gray;
+}
+
+#weatherContainer>.weather-header{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+    gap: 50px;
+}
+
+.weather-header>.cityName{
+    flex: 1;
+    margin-left: 260px;
+}
+
+.weather-header>.units{
+    margin-right: 10px;
+}
+
+.weather-header>.units>button{
+    padding: 5px 8px;
+    border: none;
+}
+
+.units>.celcius{
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+}
+
+.units>.farenheit{
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.weather-header>.units>button:hover{
+    cursor: pointer;
+}
+
+.weather-details{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 48px;
+}
+
+.weather-details>p{
+    font-size: 1.8rem;
+    font-weight: 200;
+    color: #ff6c00;
+}
+
+#weatherContainer>.other-details{
+    text-align: center;
+}
+
+#weatherContainer>.other-weather-info{
+    width: 450px;
+    margin: 25px auto;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 8px 0;
+    border-left: 2px solid #ff6c00;
+}
+
+.selected{
+    background-color: #ff6c00;
+    color: white;
 }

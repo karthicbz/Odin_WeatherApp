@@ -14,14 +14,7 @@ const mainWeather = document.querySelector('.main-weather');
 const mainWeatherImage = document.querySelector('.weather-img');
 
 searchButton.addEventListener('click', ()=>{
-    getWeatherData.weatherData(searchField.value)
-    .then(function(data){
-        console.log(data);
-        displayWeatherDetails(data, 'C');
-    })
-    .catch(err=>{
-        console.log(err);
-    })
+    getWeatherDetails(searchField.value, 'metric');
 })
 
 const displayWeatherDetails = (data, unit)=>{
@@ -40,3 +33,19 @@ const updateOtherInfo = (data, unit)=>{
     visibility.textContent = `Visibility: ${Math.floor(data.visibility/1000)}km`;
     humidity.textContent = `Humidity: ${data.main.humidity}%`;
 }
+
+const getWeatherDetails = (value, unit)=>{
+    getWeatherData.weatherData(value, unit)
+    .then(function(data){
+        console.log(data);
+        displayWeatherDetails(data, 'C');
+    })
+    .catch(err=>{
+        console.log(err);
+    })
+}
+
+window.addEventListener('load', ()=>{
+    getWeatherDetails('london', 'metric');
+    document.querySelector('.units>.celcius').classList.add('selected');
+})
