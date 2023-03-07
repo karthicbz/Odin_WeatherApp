@@ -45,14 +45,11 @@ const weatherContainer = (()=>{
         hourlyWeatherContainer.appendChild(hourlyWeather);
     }
 
-    const loaderImage = createElement('img', 'loader-image');
-
     container.appendChild(weatherHeader);
     container.appendChild(weatherDetails);
     container.appendChild(otherWeatherDetails);
     container.appendChild(otherWeatherInfo);
     container.appendChild(hourlyWeatherContainer);
-    container.appendChild(loaderImage);
 
     return container;
 })();
