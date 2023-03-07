@@ -1,5 +1,6 @@
 import { createElement, divPacker } from "./element_creator";
 import { getHourlyWeatherData } from "./weatherData";
+import loaderImage from '../images/weather_loader.gif';
 
 const weatherContainer = (()=>{
     const container = document.createElement('div');
@@ -44,11 +45,14 @@ const weatherContainer = (()=>{
         hourlyWeatherContainer.appendChild(hourlyWeather);
     }
 
+    const loaderImage = createElement('img', 'loader-image');
+
     container.appendChild(weatherHeader);
     container.appendChild(weatherDetails);
     container.appendChild(otherWeatherDetails);
     container.appendChild(otherWeatherInfo);
     container.appendChild(hourlyWeatherContainer);
+    container.appendChild(loaderImage);
 
     return container;
 })();

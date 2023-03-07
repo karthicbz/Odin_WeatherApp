@@ -2,6 +2,7 @@ import { inputContainer } from "./inputContainer";
 import { getHourlyWeatherData, getWeatherData } from "./weatherData";
 import { weatherContainer } from "./weatherContainer";
 import '../styles/style.css';
+import loaderImage from '../images/weather_loader.gif';
 
 const content = document.querySelector('#content');
 
@@ -14,11 +15,18 @@ const mainWeather = document.querySelector('.main-weather');
 const mainWeatherImage = document.querySelector('.weather-img');
 const units = document.querySelector('.weather-header>.units');
 const cityName = document.querySelector('.cityName');
+const loader = document.querySelector('#weatherContainer>.loader-image');
+loader.src = loaderImage;
+
 let selectedUnit = {unit: 'metric', symbol: 'C'};
 
 searchButton.addEventListener('click', ()=>{
-    getWeatherDetails(searchField.value, selectedUnit.unit);
-    getHourlyWeatherDetails(searchField.value, selectedUnit.unit);
+    if(searchField.value !== ''){
+        getWeatherDetails(searchField.value, selectedUnit.unit);
+        getHourlyWeatherDetails(searchField.value, selectedUnit.unit);
+    }else{
+        alert('city name must not be empty');
+    }
 })
 
 const displayWeatherDetails = (data, unit)=>{

@@ -51,6 +51,16 @@ body{
     background-color: gray;
 }
 
+#weatherContainer{
+    position: relative;
+}
+
+#weatherContainer>.loader-image{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+}
+
 #weatherContainer>.weather-header{
     display: flex;
     justify-content: center;
@@ -147,7 +157,7 @@ body{
     margin-right: 48px;
 }
 
-@media screen and (max-width: 412px){
+@media screen and (max-width: 415px){
     #content{
         width: auto;
         margin: 0;
@@ -173,7 +183,7 @@ body{
     #weatherContainer>.other-weather-info {
         font-size: 0.9rem;
         text-align: center;
-        width: 378px;
+        width: 350px;
         padding: 8px 0 8px 8px;
     }
 
