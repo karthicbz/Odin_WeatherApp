@@ -47,10 +47,12 @@ const updateOtherInfo = (data, unit)=>{
 }
 
 const getWeatherDetails = (value, unit)=>{
+    loader.classList.add('show_loader');
     getWeatherData.weatherData(value, unit)
     .then(function(data){
-        console.log(data);
+        // console.log(data);
         displayWeatherDetails(data, selectedUnit.symbol);
+        loader.classList.remove('show_loader');
     })
     .catch(err=>{
         console.log(err);
@@ -60,7 +62,7 @@ const getWeatherDetails = (value, unit)=>{
 const getHourlyWeatherDetails = (value, unit)=>{
     getHourlyWeatherData.hourlyWeatherData(value, unit)
     .then(function(data){
-        console.log(data.list);
+        // console.log(data.list);
         displayHourlyWeatherDetails(data.list, selectedUnit.symbol);
     })
     .catch(err=>{

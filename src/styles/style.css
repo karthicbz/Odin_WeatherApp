@@ -55,12 +55,13 @@ body{
     position: relative;
 }
 
-#weatherContainer>.loader-image{
+.loader-image{
     position: absolute;
-    top: 50%;
-    left: 50%;
+    top: 10%;
+    left: 35%;
     width: 200px;
     height: 200px;
+    opacity: 0;
 }
 
 #weatherContainer>.weather-header{
@@ -159,6 +160,10 @@ body{
     margin-right: 48px;
 }
 
+.show_loader{
+    opacity: 1;
+}
+
 @media screen and (max-width: 415px){
     #content{
         width: auto;
@@ -197,5 +202,9 @@ body{
 
     .hourly-weather {
         border-radius: 8px;
+    }
+
+    .loader-image{
+        left: 25%;
     }
 }
