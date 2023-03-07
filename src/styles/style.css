@@ -146,3 +146,44 @@ body{
 .hourly-weather>div>img{
     margin-right: 48px;
 }
+
+@media screen and (max-width: 412px){
+    #content{
+        width: auto;
+        margin: 0;
+    }
+
+    #inputContainer{
+        margin-top: 36px;
+    }
+
+    .weather-header>.cityName {
+        flex: 1;
+        margin-left: 86px;
+    }
+
+    .weather-header>.units {
+        margin-right: 16px;
+    }
+
+    #weatherContainer>.weather-header {
+        margin-top: 48px;
+    }
+
+    #weatherContainer>.other-weather-info {
+        font-size: 0.9rem;
+        text-align: center;
+        width: 378px;
+        padding: 8px 0 8px 8px;
+    }
+
+    .hourly-weather>div {
+        color: #514f4f;
+        font-size: 0.9rem;
+        background: linear-gradient(45deg, #e7ac84, transparent);
+    }
+
+    .hourly-weather {
+        border-radius: 8px;
+    }
+}
