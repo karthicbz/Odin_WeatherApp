@@ -2,59 +2,73 @@ import { createElement, divPacker } from "./element_creator";
 import { getHourlyWeatherData } from "./weatherData";
 // import loaderImage from '../images/weather_loader.gif';
 
-const weatherContainer = (()=>{
-    const container = document.createElement('div');
-    container.id = 'weatherContainer';
+const weatherContainer = (() => {
+  const container = document.createElement("div");
+  container.id = "weatherContainer";
 
+  const weatherHeader = divPacker([["p", "cityName"]], "weather-header");
+  const unitToggler = divPacker(
+    [
+      ["button", "metric", null, "C"],
+      ["button", "imperial", null, "F"],
+    ],
+    "units"
+  );
+  weatherHeader.append(unitToggler);
 
-    // const countryDetails = document.createElement('div');
-    // countryDetails.className = 'country-details';
+  const weatherDetails = document.createElement("div");
+  weatherDetails.className = "weather-details";
 
-    // const cityName = document.createElement('p');
-    // cityName.className = 'cityName';
-    // countryDetails.appendChild(cityName);
-    const weatherHeader = divPacker([['p', 'cityName']], 'weather-header');
-    const unitToggler = divPacker([['button', 'metric', null, 'C'], ['button', 'imperial', null, 'F']], 'units');
-    weatherHeader.append(unitToggler);
+  const weatherImage = document.createElement("img");
+  weatherImage.className = "weather-img";
+  weatherImage.src = "#";
+  weatherDetails.appendChild(weatherImage);
 
-    const weatherDetails = document.createElement('div');
-    weatherDetails.className = 'weather-details';
+  const mainWeather = document.createElement("p");
+  mainWeather.className = "main-weather";
+  weatherDetails.appendChild(mainWeather);
 
-    const weatherImage = document.createElement('img');
-    weatherImage.className = 'weather-img';
-    weatherImage.src = '#';
-    weatherDetails.appendChild(weatherImage);
+  const otherWeatherDetails = document.createElement("div");
+  otherWeatherDetails.className = "other-details";
 
-    const mainWeather = document.createElement('p');
-    mainWeather.className = 'main-weather';
-    weatherDetails.appendChild(mainWeather);
+  const weatherText = document.createElement("p");
+  weatherText.className = "weather-text";
+  otherWeatherDetails.appendChild(weatherText);
 
-    const otherWeatherDetails = document.createElement('div');
-    otherWeatherDetails.className = 'other-details';
+  const otherWeatherInfo = divPacker(
+    [
+      ["p", "max-temp", null],
+      ["p", "min-temp", null],
+      ["p", "visibility", null],
+      ["p", "humidity", null],
+    ],
+    "other-weather-info"
+  );
 
-    const weatherText = document.createElement('p');
-    weatherText.className = 'weather-text';
-    otherWeatherDetails.appendChild(weatherText);
+  const hourlyWeatherContainer = createElement("div", "hourly-weather");
+  for (let i = 0; i < 40; i++) {
+    const hourlyWeather = divPacker(
+      [
+        ["p", "day"],
+        ["img", "weather-img"],
+        ["p", "min-max"],
+        ["p", "desc"],
+      ],
+      "hourly-weather-" + i
+    );
+    hourlyWeatherContainer.appendChild(hourlyWeather);
+  }
 
-    const otherWeatherInfo = divPacker([['p', 'max-temp', null], ['p', 'min-temp', null],
-['p', 'visibility', null], ['p', 'humidity', null]], 'other-weather-info');
+  const loader_image = createElement("img", "loader-image");
 
-    const hourlyWeatherContainer = createElement('div', 'hourly-weather');
-    for(let i=0; i<40; i++){
-        const hourlyWeather = divPacker([['p', 'day'], ['img', 'weather-img'], ['p', 'min-max'], ['p', 'desc']], 'hourly-weather-'+i);
-        hourlyWeatherContainer.appendChild(hourlyWeather);
-    }
+  container.appendChild(weatherHeader);
+  container.appendChild(weatherDetails);
+  container.appendChild(otherWeatherDetails);
+  container.appendChild(otherWeatherInfo);
+  container.appendChild(hourlyWeatherContainer);
+  container.appendChild(loader_image);
 
-    const loader_image = createElement('img', 'loader-image');
-
-    container.appendChild(weatherHeader);
-    container.appendChild(weatherDetails);
-    container.appendChild(otherWeatherDetails);
-    container.appendChild(otherWeatherInfo);
-    container.appendChild(hourlyWeatherContainer);
-    container.appendChild(loader_image);
-
-    return container;
+  return container;
 })();
 
-export {weatherContainer};
+export { weatherContainer };
