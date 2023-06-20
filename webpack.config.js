@@ -1,12 +1,14 @@
+const dotenv = require("dotenv-webpack");
+// const Dotenv = require("dotenv");
 const path = require("path");
 const htmlWebpackPlugin = require("html-webpack-plugin");
 const miniCssExtractPlugin = require("mini-css-extract-plugin");
 const cssMinimizerPlugin = require("css-minimizer-webpack-plugin");
 const terserPlugin = require("terser-webpack-plugin");
-const dotenv = require("dotenv-webpack");
+const webpack = require("webpack");
 
 module.exports = {
-  mode: "development",
+  mode: "production",
   entry: "./src/scripts/index.js",
   output: {
     filename: "main.[hash].js",
@@ -24,7 +26,9 @@ module.exports = {
     new miniCssExtractPlugin({
       filename: "[name].[hash].css",
     }),
-    new dotenv(),
+    new dotenv({
+      systemvars: true,
+    }),
   ],
   module: {
     rules: [
